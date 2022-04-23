@@ -17,8 +17,9 @@ router.post('/login', authMiddleware.isNotAuthenticated, authController.login)
 
 /* Users */
 
-router.post('/users', authController.create)
-router.get('/users/me', authMiddleware.isAuthenticated, usersController.getCurrentUser)
+router.post('/register', authMiddleware.isNotAuthenticated, authController.create)
+router.get('/users/me', authMiddleware.isAuthenticated, 
+usersController.getCurrentUser)
 router.get('/users/:id', usersController.getUserById)
 
 module.exports = router
