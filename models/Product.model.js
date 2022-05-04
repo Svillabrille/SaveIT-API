@@ -1,35 +1,31 @@
 const mongoose = require('mongoose')
 
-const ticketSchema = new mongoose.Schema(
+const productSchema = new mongoose.Schema(
     {
 
-      supermarket: {
+      name: {
         type: String,
         required: true,
       },
-      barcode:{
+      quantity:{
         type: Number,
-        required:true,
       },
-      purchasedate: {
+      price: {
+          type: Number,
+          required: true
+      },
+      supermarket: {
+          type: String,
+          required: true
+      },
+      description: {
         type: Date,
         required:true
       },
-      products:{
-        quantity: {
-            type: Number,
-            required: true
-        },
-        price: {
-            type: Number,
-            required: true
-        }
-      },
       user: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'User'
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
       }
-
     },
     {
       timestamps: true,
@@ -46,6 +42,6 @@ const ticketSchema = new mongoose.Schema(
 
 
 
-const Ticket = mongoose.model('Ticket', ticketSchema)
+const Ticket = mongoose.model('Ticket', productSchema)
 
 module.exports = Ticket

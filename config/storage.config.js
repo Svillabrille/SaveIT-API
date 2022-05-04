@@ -10,7 +10,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
   cloudinary,
   params: {
-    folder: 'iron-gym',
+    folder: 'SaveIT',
     allowed_formats: ['jpg', 'png']
   }
 })

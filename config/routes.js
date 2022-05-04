@@ -21,4 +21,10 @@ router.get('/users/me', authMiddleware.isAuthenticated,
 usersController.getCurrentUser)
 router.get('/users/:id', usersController.getUserById)
 
+/* Tickets */
+
+/* Shopping Lists */
+
+router.post('/create-your-shopping-list/checkout', authMiddleware.isAuthenticated, usersController.checkout)
+
 module.exports = router
