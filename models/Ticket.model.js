@@ -1,32 +1,30 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 const ticketSchema = new mongoose.Schema(
-    {
+  {
     content: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
-      user: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'User'
-      }
-
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
     },
-    {
-      timestamps: true,
-      toJSON: {
-        virtuals: true,
-        transform: (doc, ret) => {
-          delete ret.password
-          delete ret.__v
-          return ret
-        }
-      }
-    }
-  )
+  },
+  {
+    timestamps: true,
+    toJSON: {
+      virtuals: true,
+      transform: (doc, ret) => {
+        delete ret.password;
+        delete ret.__v;
+        return ret;
+      },
+    },
+  }
+);
 
+const Ticket = mongoose.model("Ticket", ticketSchema);
 
-
-const Ticket = mongoose.model('Ticket', ticketSchema)
-
-module.exports = Ticket
+module.exports = Ticket;
