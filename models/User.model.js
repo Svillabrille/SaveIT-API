@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
+const Ticket = require('./Ticket.model');
 
 const SALT_ROUNDS = 10
 const EMAIL_PATTERN =
@@ -49,6 +50,12 @@ const userSchema = new mongoose.Schema(
     }
   }
 )
+
+userSchema.virtual('tickets', {
+  ref:'Ticket',
+  foreignField: 'user',
+  localField: '_id'
+})
 
 userSchema.pre('save', function(next) {
   if (this.isModified('password')) {

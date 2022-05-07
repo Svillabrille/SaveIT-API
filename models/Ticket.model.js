@@ -2,29 +2,10 @@ const mongoose = require('mongoose')
 
 const ticketSchema = new mongoose.Schema(
     {
-
-      supermarket: {
+    content: {
         type: String,
-        required: true,
-      },
-      barcode:{
-        type: Number,
-        required:true,
-      },
-      purchasedate: {
-        type: Date,
-        required:true
-      },
-      products:{
-        quantity: {
-            type: Number,
-            required: true
-        },
-        price: {
-            type: Number,
-            required: true
-        }
-      },
+        required: true
+    },
       user: {
           type: mongoose.Schema.Types.ObjectId,
           ref: 'User'

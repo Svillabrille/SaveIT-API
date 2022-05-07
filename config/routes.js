@@ -5,6 +5,7 @@ const authMiddleware = require('../middlewares/auth.middleware')
 
 const usersController = require('../controllers/users.controller')
 const authController = require('../controllers/auth.controller')
+const ticketController = require('../controllers/ticket.controller')
 
 router.get('/', (req, res, next) => {
   res.status(200).json({ ok: true })
@@ -22,6 +23,8 @@ usersController.getCurrentUser)
 router.get('/users/:id', usersController.getUserById)
 
 /* Tickets */
+
+router.post('/new-ticket', authMiddleware.isAuthenticated, ticketController.createTicket)
 
 /* Shopping Lists */
 
